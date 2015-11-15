@@ -22,7 +22,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.1.0-SNAPSHOT'
+        classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.1.0'
     }
 }
 ```
