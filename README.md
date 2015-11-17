@@ -15,8 +15,6 @@ Works with the latest Gradle Android Tools version 1.3.1. This plugin is compile
 **app/build.gradle**
 
 ```groovy
-apply plugin: 'com.vanniktech.android.apk.size'
-
 buildscript {
     repositories {
         mavenCentral()
@@ -25,7 +23,11 @@ buildscript {
         classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.1.0'
     }
 }
+
+apply plugin: 'com.vanniktech.android.apk.size'
 ```
+
+Information: [This plugin is also available on Gradle plugins](https://plugins.gradle.org/plugin/com.vanniktech.android.apk.size)
 
 # License
 
