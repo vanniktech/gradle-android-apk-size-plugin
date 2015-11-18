@@ -8,10 +8,10 @@ import org.gradle.api.Project
 class ApkSizePlugin implements Plugin<Project> {
     @Override
     void apply(final Project project) {
-        if (project.plugins.hasPlugin('com.android.application')) {
+        if (project != null && project.plugins.hasPlugin('com.android.application')) {
             ApkSizePlugin.applyAndroidProject(project, (DomainObjectCollection<BaseVariant>) project.android.applicationVariants)
         } else {
-            throw new IllegalArgumentException("Apk Size Plugin requires the Android Application plugin to be configured")
+            throw new UnsupportedOperationException('APK Size Plugin requires the Android Application plugin to be configured')
         }
     }
 
@@ -26,10 +26,13 @@ class ApkSizePlugin implements Plugin<Project> {
                     path += "/${output.name}"
                 }
 
-                ApkSizeTask task = project.tasks.create("size${slug}Apk", ApkSizeTask)
+                ApkSizeTask task = project.task("size${slug}Apk", type: ApkSizeTask, description: "Outputs APK size for ${variant.name} variant.", group: 'Reporting')
                 task.apk = output
                 task.outputFile = project.file(path + '.csv')
-                variant.assemble.doLast { task.sizeApk() }
+
+                variant.assemble.doLast {
+                    task.sizeApk()
+                }
             }
         }
     }
