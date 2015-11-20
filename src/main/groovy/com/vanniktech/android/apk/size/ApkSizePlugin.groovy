@@ -27,7 +27,7 @@ class ApkSizePlugin implements Plugin<Project> {
                 }
 
                 ApkSizeTask task = project.task("size${slug}Apk", type: ApkSizeTask, description: "Outputs APK size for ${variant.name} variant.", group: 'Reporting')
-                task.apk = output
+                task.apk = output.outputFile
                 task.outputFile = project.file(path + '.csv')
 
                 variant.assemble.doLast {
