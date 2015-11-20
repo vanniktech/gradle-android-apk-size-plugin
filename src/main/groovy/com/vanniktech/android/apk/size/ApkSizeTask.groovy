@@ -1,7 +1,5 @@
 package com.vanniktech.android.apk.size
 
-import com.android.build.gradle.api.BaseVariantOutput
-
 import org.gradle.api.DefaultTask
 import org.gradle.api.logging.LogLevel
 import org.gradle.api.tasks.Input
@@ -15,14 +13,14 @@ import groovy.transform.stc.SimpleType
 
 class ApkSizeTask extends DefaultTask {
     @Input
-    def BaseVariantOutput apk
+    def File apk
 
     @OutputFile
     def File outputFile
 
     @TaskAction
     void sizeApk() {
-        final int apkSize = apk.outputFile.length()
+        final int apkSize = apk.length()
 
         withStyledOutput(StyledTextOutput.Style.Info) { out ->
             out.println("Total APK Size in ${apk.name} in bytes: ${apkSize}")
