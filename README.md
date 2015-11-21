@@ -29,6 +29,14 @@ apply plugin: 'com.vanniktech.android.apk.size'
 
 Information: [This plugin is also available on Gradle plugins](https://plugins.gradle.org/plugin/com.vanniktech.android.apk.size)
 
+### Snapshots
+
+Can be found [here](https://oss.sonatype.org/#nexus-search;quick~gradle-android-apk-size-plugin). Current one is:
+
+```groovy
+classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.1.2-SNAPSHOT'
+```
+
 # License
 
 Copyright (C) 2015 Vanniktech - Niklas Baudy
