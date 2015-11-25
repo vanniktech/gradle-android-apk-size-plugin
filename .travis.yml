@@ -3,7 +3,7 @@ language: groovy
 groovy:
     - 2.3.6
     - 2.3.9
-  
+
 jdk:
     - oraclejdk8
 
@@ -18,6 +18,13 @@ env:
     global:
         - secure: "EVsf2UhmRqoyDy2lfnXfI9QY0GD6mUc6eaFGKQFPv/ZfWvHkOICNVlnHSi7Vy6x+nkpRECTej82aLFAu3PY5KrboxI4NMhuxPNrnYvcoGoz2etua+7I8RMyyTKSOTmeHjBoEYTydiE2/ZBqF1ZE1omEnjbmHQKbys3Y22LzTQRF4lJmPnPhLGk97gPHMOE71hLJ0AFE35Kr2b3EtHiZGkTKmsy4WSzWbrQ6KlpGKIa42cwY9Yjh0qcHUFPpTp7LIMhZooiU75DYel0x14EHX7pJeIYuyU/6dKGOapfp0FBFQnycechgg98YrmFriqZcdvR9M9KzqzPL9IqI/bbtaxJkEJPaI/2iBfO+iC0gv5uPl9gC0Q+SvPPl90L2u0IdchhWHaRXcw8kQAWnMZb7y91gKOVaA34xw/XPoEByEoT/VSqK+a2b0k5vMahA3M0y+4UzU+qqCmZCkx7wV7Km3xgfO3/gqvGh7fD1uqcr71lClYfLxQuZz+834bADRligDN3eRQ09drkzCUxZuPjpurlQNOCkY5faHtY0j74LlYBp3GxDiCbOMStcZMxfSKdAaF4v9e2tzKy5miWAb+IXclekBvURpBRmyKKTNn94jOHhRsLJqA7W6Qfz9eoj3WKOEO5nYFsYWuNZoMSLMtApbto2PnqrSU4cyuoN4UXUAggI="
         - secure: "FD1fXElFxPZvgiFWJbIRWeLC323KmDcCLct+yYtl1VH6p23EwoD+wggP4LTLPWOB/5Bw/Wb5oizfkVgtgETXbX1CzrMBbEud9+1wkEyoF14Cy7kjFd9CxKoRibGISUYz4Tc8KtDB2zJuBpY0Rzn1czAYdkcKdRlg8noSFxGMSkQjy0gkWVXJxL8o976FoPKBHOc1zWGHpb3B/vS5Rwcy2/C1aJoaf83Y4lphKI5Ofp80rNHsGenVV+qQl72D1faFVALmL871XB3R/J+DCP787nU6YOSaQcvouQOGRvktH5rhovGUgIaVpDmdhxiam3iUd8IbD6kggy/Fi0t2qedp8sRo5apG4iUOWJGEfcCfpHetx1dZSLn9PbIPYo3LtBXQuYs/im2NkYi1waFmyDmsuw7pCiiV0OAmzCqj7lBdMJZ3102/Tjtj6yWe+dCehFhBc5OYVdUWxz4SBexys0XZU7buyEj+/WT//kYvZR/Xwa5ujHHH7YQ4I9k8PbAxT6MVq1oryYc2pmiW9N4r2O04Uew/Bnp21sYeu+DznLkOggQ52txAZK+UJWvcRGOWl3sT9im9qXw24s2GOcoUP+ddOnKBwujhCzshK1S6/k++UkOUCc4finPhlvPoHqJyunLfSbIsOsw+/6LEQYRvCbwfIo+CdFE4gAZrU29GojK0BC0="
+
+branches:
+    except:
+        - gh-pages
+
+notifications:
+    email: false
 
 sudo: false
 
