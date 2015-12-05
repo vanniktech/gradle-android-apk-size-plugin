@@ -26,7 +26,9 @@ class ApkSizePlugin implements Plugin<Project> {
                     path += "/${output.name}"
                 }
 
-                ApkSizeTask task = project.task("size${slug}Apk", type: ApkSizeTask, description: "Outputs APK size for ${variant.name} variant.", group: 'Reporting')
+                def task = project.tasks.create("size${slug}Apk", ApkSizeTask)
+                task.description = "Outputs APK size for ${variant.name} variant."
+                task.group = 'Reporting'
                 task.apk = output.outputFile
                 task.outputFile = project.file(path + '.csv')
 
