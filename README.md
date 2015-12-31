@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/vanniktech/gradle-android-apk-size-plugin.svg)](https://travis-ci.org/vanniktech/gradle-android-apk-size-plugin)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-![Java 8 required](https://img.shields.io/badge/java-8-brightgreen.svg)
+![Java 7 required](https://img.shields.io/badge/java-7-brightgreen.svg)
 
 Gradle plugin that generates CSV files with apk size per output and variant of apk. The files can be found here `<projectbuildDir>/outputs/apksize/`. In addition while building it'll also print out the size of the apk.
 
 This plugin creates a task per output file, per variant, and configures each task to run after the variant's assemble task. This means that if the assemble task does not run, no apk size will be reported.
 
-Works with the latest Gradle Android Tools version 1.3.1. This plugin is compiled using Java 8 hence you also need Java 8 in order to use it.
+Works with the latest stable Gradle Android Tools version 1.5.0. This plugin is compiled using Java 7 hence you also need Java 7 in order to use it.
 
 # Set up
 
