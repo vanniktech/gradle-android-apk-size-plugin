@@ -47,6 +47,11 @@ pluginBundle {
     }
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.10'
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
 task groovydocJar(type: Jar, dependsOn: groovydoc) {
     classifier = 'groovydoc'
     from 'build/docs/groovydoc'
