@@ -9,7 +9,7 @@ class ApkSizePlugin implements Plugin<Project> {
     @Override
     void apply(final Project project) {
         if (project != null && project.plugins.hasPlugin('com.android.application')) {
-            ApkSizePlugin.applyAndroidProject(project, (DomainObjectCollection<BaseVariant>) project.android.applicationVariants)
+            applyAndroidProject(project, (DomainObjectCollection<BaseVariant>) project.android.applicationVariants)
         } else {
             throw new UnsupportedOperationException('APK Size Plugin requires the Android Application plugin to be configured')
         }

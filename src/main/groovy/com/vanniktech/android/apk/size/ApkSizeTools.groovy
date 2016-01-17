@@ -4,11 +4,11 @@ import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
 final class ApkSizeTools {
-    public static String convertBytesToMegaBytes(final long bytes) {
+    static String convertBytesToMegaBytes(final long bytes) {
         return getDecimalFormat().format(bytes / 1000000)
     }
 
-    public static String convertBytesToKiloBytes(final long bytes) {
+    static String convertBytesToKiloBytes(final long bytes) {
         return getDecimalFormat().format(bytes / 1000)
     }
 
