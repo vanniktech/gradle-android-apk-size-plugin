@@ -12,11 +12,8 @@ import groovy.transform.stc.ClosureParams
 import groovy.transform.stc.SimpleType
 
 class ApkSizeTask extends DefaultTask {
-    @Input
-    def File apk
-
-    @OutputFile
-    def File outputFile
+    @Input def File apk
+    @OutputFile def File outputFile
 
     @TaskAction
     void sizeApk() {
