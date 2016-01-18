@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.3.0
+
+- Active Development
+
 ## [0.2.0](https://github.com/vanniktech/gradle-android-apk-size-plugin/tree/0.2.0) (2016-01-19)
 [Full Changelog](https://github.com/vanniktech/gradle-android-apk-size-plugin/compare/v0.1.2...0.2.0)
 
