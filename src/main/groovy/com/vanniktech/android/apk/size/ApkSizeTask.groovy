@@ -20,7 +20,8 @@ class ApkSizeTask extends DefaultTask {
         final int apkSize = apk.length()
 
         withStyledOutput(StyledTextOutput.Style.Info) { out ->
-            out.println("Total APK Size in ${apk.name} in bytes: ${apkSize}")
+            def fileEnding = apk.name[-3..-1].toUpperCase(Locale.US)
+            out.println("Total ${fileEnding} Size in ${apk.name} in bytes: ${apkSize}")
         }
 
         if (outputFile != null) {
