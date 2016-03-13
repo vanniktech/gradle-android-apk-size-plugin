@@ -10,25 +10,25 @@ class ApkSizePluginTest {
     public ExpectedException expectedException = ExpectedException.none()
 
     @Test
-    public void testNullProject() throws Exception {
+    public void nullProject() throws Exception {
         expectedException.expect(UnsupportedOperationException.class)
-        expectedException.expectMessage('APK Size Plugin requires the Android Application plugin to be configured')
+        expectedException.expectMessage('APK Size Plugin requires the Android Application or Library plugin to be configured')
 
         new ApkSizePlugin().apply(null)
     }
 
     @Test
-    public void testNotAndroidProject() {
+    public void notAndroidProject() {
         def project = ProjectBuilder.builder().build()
 
         expectedException.expect(UnsupportedOperationException.class)
-        expectedException.expectMessage('APK Size Plugin requires the Android Application plugin to be configured')
+        expectedException.expectMessage('APK Size Plugin requires the Android Application or Library plugin to be configured')
 
         new ApkSizePlugin().apply(project)
     }
 
     @Test
-    public void testAndroidProject() {
+    public void androidProject() {
         def project = ProjectBuilder.builder().build()
         project.plugins.apply('com.android.application')
 
@@ -36,12 +36,9 @@ class ApkSizePluginTest {
     }
 
     @Test
-    public void testAndroidLibrary() {
+    public void androidLibrary() {
         def project = ProjectBuilder.builder().build()
         project.plugins.apply('com.android.library')
-
-        expectedException.expect(UnsupportedOperationException.class)
-        expectedException.expectMessage('APK Size Plugin requires the Android Application plugin to be configured')
 
         new ApkSizePlugin().apply(project)
     }

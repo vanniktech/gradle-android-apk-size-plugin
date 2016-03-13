@@ -10,8 +10,10 @@ class ApkSizePlugin implements Plugin<Project> {
     void apply(final Project project) {
         if (project != null && project.plugins.hasPlugin('com.android.application')) {
             applyAndroidProject(project, (DomainObjectCollection<BaseVariant>) project.android.applicationVariants)
+        } else if (project != null && project.plugins.hasPlugin('com.android.library')) {
+            applyAndroidProject(project, (DomainObjectCollection<BaseVariant>) project.android.libraryVariants)
         } else {
-            throw new UnsupportedOperationException('APK Size Plugin requires the Android Application plugin to be configured')
+            throw new UnsupportedOperationException('APK Size Plugin requires the Android Application or Library plugin to be configured')
         }
     }
 
@@ -27,7 +29,7 @@ class ApkSizePlugin implements Plugin<Project> {
                 }
 
                 def task = project.tasks.create("size${slug}Apk", ApkSizeTask)
-                task.description = "Outputs APK size for ${variant.name} variant."
+                task.description = "Outputs APK / AAR size for ${variant.name} variant."
                 task.group = 'Reporting'
                 task.apk = output.outputFile
                 task.outputFile = project.file(path + '.csv')

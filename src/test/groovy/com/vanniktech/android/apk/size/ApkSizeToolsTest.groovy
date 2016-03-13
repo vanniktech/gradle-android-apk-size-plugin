@@ -1,42 +1,46 @@
 package com.vanniktech.android.apk.size
 
+import org.junit.After
+import org.junit.Before
 import org.junit.Test
 
-import static org.junit.Assert.assertEquals
-
 class ApkSizeToolsTest {
-    @Test
-    public void testConvertBytesToMegaBytes() {
-        Locale defaultLocale = Locale.default;
+    private Locale defaultLocale
 
-        for (final Locale locale : Locale.availableLocales) {
-            Locale.setDefault(locale);
+    @Before
+    public void setUp() {
+        defaultLocale = Locale.default
+    }
 
-            assertEquals("0.01", ApkSizeTools.convertBytesToMegaBytes(10000));
-            assertEquals("655941.39", ApkSizeTools.convertBytesToMegaBytes(655941390323));
-            assertEquals("594.39", ApkSizeTools.convertBytesToMegaBytes(594390323));
-            assertEquals("75.94", ApkSizeTools.convertBytesToMegaBytes(75939284));
-            assertEquals("4.84", ApkSizeTools.convertBytesToMegaBytes(4843893));
-            assertEquals("0.84", ApkSizeTools.convertBytesToMegaBytes(843893));
-        }
-
-        Locale.setDefault(defaultLocale);
+    @After
+    public void tearDown() {
+        Locale.setDefault(defaultLocale)
     }
 
     @Test
-    public void testConvertBytesToKiloBytes() {
-        Locale defaultLocale = Locale.default;
-
+    public void convertBytesToMegaBytes() {
         for (final Locale locale : Locale.availableLocales) {
-            Locale.setDefault(locale);
+            Locale.setDefault(locale)
 
-            assertEquals("7834843.89", ApkSizeTools.convertBytesToKiloBytes(7834843893));
-            assertEquals("4843.89", ApkSizeTools.convertBytesToKiloBytes(4843893));
-            assertEquals("0.65", ApkSizeTools.convertBytesToKiloBytes(654));
-            assertEquals("22.27", ApkSizeTools.convertBytesToKiloBytes(22267));
-            assertEquals("5.64", ApkSizeTools.convertBytesToKiloBytes(5643));
+            assert '0.01' == ApkSizeTools.convertBytesToMegaBytes(10000)
+            assert '655941.39' == ApkSizeTools.convertBytesToMegaBytes(655941390323)
+            assert '594.39' == ApkSizeTools.convertBytesToMegaBytes(594390323)
+            assert '75.94' == ApkSizeTools.convertBytesToMegaBytes(75939284)
+            assert '4.84' == ApkSizeTools.convertBytesToMegaBytes(4843893)
+            assert '0.84' == ApkSizeTools.convertBytesToMegaBytes(843893)
         }
+    }
 
-        Locale.setDefault(defaultLocale);
+    @Test
+    public void convertBytesToKiloBytes() {
+        for (final Locale locale : Locale.availableLocales) {
+            Locale.setDefault(locale)
+
+            assert '7834843.89' == ApkSizeTools.convertBytesToKiloBytes(7834843893)
+            assert '4843.89' == ApkSizeTools.convertBytesToKiloBytes(4843893)
+            assert '0.65' == ApkSizeTools.convertBytesToKiloBytes(654)
+            assert '22.27' == ApkSizeTools.convertBytesToKiloBytes(22267)
+            assert '5.64' == ApkSizeTools.convertBytesToKiloBytes(5643)
+        }
     }
 }
