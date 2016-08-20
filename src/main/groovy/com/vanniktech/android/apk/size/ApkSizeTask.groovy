@@ -5,8 +5,7 @@ import org.gradle.api.logging.LogLevel
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
-import org.gradle.logging.StyledTextOutput
-import org.gradle.logging.StyledTextOutputFactory
+import org.gradle.api.logging.Logger
 
 import groovy.transform.stc.ClosureParams
 import groovy.transform.stc.SimpleType
@@ -19,9 +18,9 @@ class ApkSizeTask extends DefaultTask {
     void sizeApk() {
         final int apkSize = apk.length()
 
-        withStyledOutput(StyledTextOutput.Style.Info) { out ->
+        withStyledOutput() { out ->
             def fileEnding = apk.name[-3..-1].toUpperCase(Locale.US)
-            out.println("Total ${fileEnding} Size in ${apk.name} in bytes: ${apkSize}")
+            out.warn("Total ${fileEnding} Size in ${apk.name} in bytes: ${apkSize}")
         }
 
         if (outputFile != null) {
@@ -40,10 +39,7 @@ class ApkSizeTask extends DefaultTask {
         }
     }
 
-    private void withStyledOutput(StyledTextOutput.Style style, LogLevel level = null, @ClosureParams(value = SimpleType, options = ['org.gradle.logging.StyledTextOutput']) Closure closure) {
-        def factory = services.get(StyledTextOutputFactory)
-        def output = level == null ? factory.create('apksize') : factory.create('apksize', level)
-
-        closure(output.withStyle(style))
+    private void withStyledOutput(@ClosureParams(value = SimpleType, options = ['org.gradle.api.logging.Logger']) Closure closure) {
+        closure(getLogger())
     }
 }
