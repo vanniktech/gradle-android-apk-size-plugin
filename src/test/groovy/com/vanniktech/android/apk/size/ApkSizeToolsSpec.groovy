@@ -1,25 +1,21 @@
 package com.vanniktech.android.apk.size
 
-import org.junit.After
-import org.junit.Before
-import org.junit.Test
+import spock.lang.Specification
 
-class ApkSizeToolsTest {
-    private Locale defaultLocale
+class ApkSizeToolsSpec extends Specification {
+    Locale defaultLocale
 
-    @Before
-    public void setUp() {
+    def 'setup'() {
         defaultLocale = Locale.default
     }
 
-    @After
-    public void tearDown() {
+    def 'cleanup'() {
         Locale.setDefault(defaultLocale)
     }
 
-    @Test
-    public void convertBytesToMegaBytes() {
-        for (final Locale locale : Locale.availableLocales) {
+    def 'convertBytesToMegaBytes'() {
+        expect:
+        Locale.availableLocales.each { locale ->
             Locale.setDefault(locale)
 
             assert '0.01' == ApkSizeTools.convertBytesToMegaBytes(10000)
@@ -31,9 +27,9 @@ class ApkSizeToolsTest {
         }
     }
 
-    @Test
-    public void convertBytesToKiloBytes() {
-        for (final Locale locale : Locale.availableLocales) {
+    def 'convertBytesToKiloBytes'() {
+        expect:
+        Locale.availableLocales.each { locale ->
             Locale.setDefault(locale)
 
             assert '7834843.89' == ApkSizeTools.convertBytesToKiloBytes(7834843893)
