@@ -1,52 +1,43 @@
 package com.vanniktech.android.apk.size
 
-import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
+import spock.lang.Shared
 import spock.lang.Specification
+import spock.lang.Unroll
 
-class ApkSizePluginSpec extends Specification {
-    def 'nullProject'() {
-        when:
-        new ApkSizePlugin().apply(null)
+final class ApkSizePluginSpec extends Specification {
+    @Shared
+    def project
 
-        then:
-        UnsupportedOperationException exception = thrown()
-        exception.message == 'APK Size Plugin requires the Android Application or Library plugin to be configured'
+    def 'setup'() {
+        project = ProjectBuilder.builder().build()
     }
 
-    def 'notAndroidProject'() {
-        given:
-        Project project = ProjectBuilder.builder().build()
-
+    @Unroll
+    def '#theProject project is invalid'() {
         when:
-        new ApkSizePlugin().apply(project)
+        new ApkSizePlugin().apply(theProject) // apply plugin: 'com.vanniktech.android.apk.size'
 
         then:
-        UnsupportedOperationException exception = thrown()
-        exception.message == 'APK Size Plugin requires the Android Application or Library plugin to be configured'
+        def e = thrown UnsupportedOperationException
+        e.message == 'APK Size Plugin requires the Android Application or Library plugin to be configured'
+
+        where:
+        theProject << [null, project]
     }
 
-    def 'androidProject'() {
+    @Unroll
+    def '#projectPlugin project applied correctly'() {
         given:
-        Project project = ProjectBuilder.builder().build()
-        project.apply plugin: 'com.android.application'
+        project.apply plugin: projectPlugin
 
         when:
-        new ApkSizePlugin().apply(project)
+        project.apply plugin: 'com.vanniktech.android.apk.size'
 
         then:
         noExceptionThrown()
-    }
 
-    def 'androidLibrary'() {
-        given:
-        Project project = ProjectBuilder.builder().build()
-        project.apply plugin: 'com.android.library'
-
-        when:
-        new ApkSizePlugin().apply(project)
-
-        then:
-        noExceptionThrown()
+        where:
+        projectPlugin << ['com.android.application', 'com.android.library']
     }
 }
