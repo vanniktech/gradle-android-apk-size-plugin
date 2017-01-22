@@ -4,19 +4,15 @@ import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 
 final class ApkSizeTools {
-    static String convertBytesToMegaBytes(final long bytes) {
+    static String convertBytesToMegaBytes(long bytes) {
         return getDecimalFormat().format(bytes / 1000000)
     }
 
-    static String convertBytesToKiloBytes(final long bytes) {
+    static String convertBytesToKiloBytes(long bytes) {
         return getDecimalFormat().format(bytes / 1000)
     }
 
-    private static DecimalFormat getDecimalFormat() {
+    static DecimalFormat getDecimalFormat() {
         return new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US))
-    }
-
-    private ApkSizeTools() {
-        throw new AssertionError("No instances")
     }
 }
