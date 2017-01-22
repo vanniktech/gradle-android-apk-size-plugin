@@ -25,8 +25,8 @@ final class ApkSizeTaskSpec extends Specification {
         when:
         task.execute()
 
-        def scanner = new Scanner(task.outputFile as File)
-        def contents = new ArrayList<>()
+        def scanner = new Scanner(task.outputFile)
+        def contents = []
         while (scanner.hasNextLine()) {
             contents.add(scanner.nextLine())
         }
