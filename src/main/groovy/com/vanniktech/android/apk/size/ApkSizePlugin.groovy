@@ -7,16 +7,18 @@ import org.gradle.api.Project
 
 final class ApkSizePlugin implements Plugin<Project> {
     @Override void apply(Project project) {
-        if (project.plugins.hasPlugin('com.android.application')) {
-            applyAndroidProject project, project.android.applicationVariants
-        } else if (project.plugins.hasPlugin('com.android.library')) {
-            applyAndroidProject project, project.android.libraryVariants
+        if (project.plugins.hasPlugin("com.android.application")) {
+            applyAndroidProject(project, project.android.applicationVariants)
+        } else if (project.plugins.hasPlugin("com.android.library")) {
+            applyAndroidProject(project, project.android.libraryVariants)
         } else {
-            throw new UnsupportedOperationException('APK Size Plugin requires the Android Application or Library plugin to be configured')
+            throw new UnsupportedOperationException("APK Size Plugin requires the Android Application or Library plugin to be configured")
         }
     }
 
-    static def applyAndroidProject(Project project, DomainObjectCollection<BaseVariant> variants) {
+    static applyAndroidProject(Project project, DomainObjectCollection<BaseVariant> variants) {
+        project.extensions.create("apkSize", ApkSizeExtension)
+
         variants.all { variant ->
             variant.outputs.each { output ->
                 def slug = variant.name.capitalize()
@@ -27,11 +29,16 @@ final class ApkSizePlugin implements Plugin<Project> {
                     path += "/${output.name}"
                 }
 
-                final def task = project.tasks.create "size${slug}Apk", ApkSizeTask
+                // Read from extension
+                final extension = project.extensions["apkSize"] as ApkSizeExtension
+
+                // Create task
+                final task = project.tasks.create "size${slug}Apk", ApkSizeTask
                 task.description = "Outputs APK / AAR size for ${variant.name} variant."
-                task.group = 'Reporting'
+                task.group = "Reporting"
                 task.apk = output.outputFile
-                task.outputFile = project.file path + '.csv'
+                task.outputFile = project.file path + ".csv"
+                task.extension = extension
 
                 variant.assemble.doLast {
                     task.sizeApk()

@@ -7,12 +7,12 @@ final class ApkSizeToolsSpec extends Specification {
     def defaultLocale = Locale.default
 
     def 'cleanup'() {
-        Locale.setDefault defaultLocale
+        Locale.setDefault(defaultLocale)
     }
 
-    @Unroll def 'convert bytes to mega bytes with #locale locale'() {
+    @Unroll 'convert bytes to mega bytes with #locale locale'() {
         given:
-        Locale.setDefault locale
+        Locale.setDefault(locale)
 
         expect:
         ApkSizeTools.convertBytesToMegaBytes(10000) == '0.01'
@@ -26,9 +26,9 @@ final class ApkSizeToolsSpec extends Specification {
         locale << Locale.availableLocales
     }
 
-    @Unroll def 'convert bytes to kilo bytes with #locale locale'() {
+    @Unroll 'convert bytes to kilo bytes with #locale locale'() {
         given:
-        Locale.setDefault locale
+        Locale.setDefault(locale)
 
         expect:
         ApkSizeTools.convertBytesToKiloBytes(7834843893) == '7834843.89'

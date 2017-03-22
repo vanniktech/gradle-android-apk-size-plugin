@@ -65,6 +65,20 @@ Total time: 33.017 secs
 
 Those CSV files can for instance be used to configure the [Jenkins Plot Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Plot+Plugin), to see the apk size for each build in a graph.
 
+## Configuration
+
+Apksize is configurable via a Gradle extension (shown with default values):
+
+in `app/build.gradle`:
+```groovy
+dexcount {
+    maxApkSize = 5800000
+}
+```
+
+Configurable flags:
+- `maxApkSize`: Set the max APK size in Kb. Greater than specified size will fail the build. Default is -1.
+
 # License
 
 Copyright (C) 2015 Vanniktech - Niklas Baudy
