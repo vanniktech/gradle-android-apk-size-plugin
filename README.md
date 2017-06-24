@@ -71,7 +71,7 @@ Apksize is configurable via a Gradle extension (shown with default values):
 
 in `app/build.gradle`:
 ```groovy
-dexcount {
+apkSize {
     maxApkSize = 5800000
 }
 ```
