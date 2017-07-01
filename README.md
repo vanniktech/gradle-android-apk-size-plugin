@@ -11,7 +11,7 @@ Starting from version 0.3.0 the plugin can also be applied to Android library pr
 
 This plugin creates a task per output file, per variant, and configures each task to run after the variant's assemble task. This means that if the assemble task does not run, no apk size will be reported.
 
-Works with the latest stable Gradle Android Tools version 2.1.3. This plugin is compiled using Java 7 hence you also need Java 7 in order to use it.
+Works with the latest stable Gradle Android Tools version 2.3.3. This plugin is compiled using Java 7 hence you also need Java 7 in order to use it.
 
 # Set up
 
@@ -23,7 +23,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.3.0'
+        classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.4.0'
     }
 }
 
@@ -70,6 +70,7 @@ Those CSV files can for instance be used to configure the [Jenkins Plot Plugin](
 Apksize is configurable via a Gradle extension (shown with default values):
 
 in `app/build.gradle`:
+
 ```groovy
 apkSize {
     maxApkSize = 5800000

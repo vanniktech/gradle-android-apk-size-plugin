@@ -1,7 +1,13 @@
 # Change Log
 
-Version 0.4.0 *(In development)*
---------------------------------
+Version 0.4.0 *(2017-07-01)*
+----------------------------
+
+- java.lang.NoClassDefFoundError: org/gradle/logging/StyledTextOutput$Style [\#38](https://github.com/vanniktech/gradle-android-apk-size-plugin/issues/38)
+- Update Android Studio Gradle Build Tools to 2.3.3 [\#55](https://github.com/vanniktech/gradle-android-apk-size-plugin/pull/55) ([vanniktech](https://github.com/vanniktech))
+- Update to Gradle 4.0 [\#54](https://github.com/vanniktech/gradle-android-apk-size-plugin/pull/54) ([vanniktech](https://github.com/vanniktech))
+- Feature - Add extension to support max apk size [\#49](https://github.com/vanniktech/gradle-android-apk-size-plugin/pull/49) ([jaredsburrows](https://github.com/jaredsburrows))
+- Show mega bytes and bytes [\#43](https://github.com/vanniktech/gradle-android-apk-size-plugin/pull/43) ([jaredsburrows](https://github.com/jaredsburrows))
 
 Version 0.3.0 *(2016-09-19)*
 ----------------------------
