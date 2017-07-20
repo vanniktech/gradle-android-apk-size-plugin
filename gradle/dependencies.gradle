@@ -1,0 +1,26 @@
+// Variables for entire project
+ext {
+  // Setup
+  sourceCompatibilityVersion = JavaVersion.VERSION_1_7
+
+  // Common versions
+  kotlinVersion = "1.1.3-2"
+}
+
+// Plugins
+ext.plugs = [
+  "gradle"                        : "com.android.tools.build:gradle:2.3.3",
+  "kotlinGradlePlugin"            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
+  "gradleVersionsPlugin"          : "com.github.ben-manes:gradle-versions-plugin:0.15.0",
+  "pluginPublishPlugin"           : "com.gradle.publish:plugin-publish-plugin:0.9.1",
+  "gradleAndroidJunitJacocoPlugin": "com.vanniktech:gradle-android-junit-jacoco-plugin:0.4.0"
+]
+
+// Dependencies
+ext.deps = [
+  // compile
+  "kotlinStdlib": "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+
+  // testCompile
+  "spockCore"   : "org.spockframework:spock-core:1.1-groovy-2.4"
+]
