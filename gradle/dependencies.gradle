@@ -13,7 +13,7 @@ ext.plugs = [
   "kotlinGradlePlugin"            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
   "gradleVersionsPlugin"          : "com.github.ben-manes:gradle-versions-plugin:0.15.0",
   "pluginPublishPlugin"           : "com.gradle.publish:plugin-publish-plugin:0.9.1",
-  "gradleAndroidJunitJacocoPlugin": "com.vanniktech:gradle-android-junit-jacoco-plugin:0.4.0"
+  "gradleAndroidJunitJacocoPlugin": "com.vanniktech:gradle-android-junit-jacoco-plugin:0.7.0"
 ]
 
 // Dependencies
