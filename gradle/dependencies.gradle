@@ -4,16 +4,16 @@ ext {
   sourceCompatibilityVersion = JavaVersion.VERSION_1_7
 
   // Common versions
-  kotlinVersion = "1.1.3-2"
+  kotlinVersion = "1.1.60"
 }
 
 // Plugins
 ext.plugs = [
-  "gradle"                        : "com.android.tools.build:gradle:2.3.3",
+  "gradle"                        : "com.android.tools.build:gradle:3.0.1",
   "kotlinGradlePlugin"            : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion",
-  "gradleVersionsPlugin"          : "com.github.ben-manes:gradle-versions-plugin:0.15.0",
+  "gradleVersionsPlugin"          : "com.github.ben-manes:gradle-versions-plugin:0.17.0",
   "pluginPublishPlugin"           : "com.gradle.publish:plugin-publish-plugin:0.9.9",
-  "gradleAndroidJunitJacocoPlugin": "com.vanniktech:gradle-android-junit-jacoco-plugin:0.9.0"
+  "gradleAndroidJunitJacocoPlugin": "com.vanniktech:gradle-android-junit-jacoco-plugin:0.10.0"
 ]
 
 // Dependencies
