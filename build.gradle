@@ -1,5 +1,5 @@
 buildscript {
-    apply from: rootProject.file("gradle/dependencies.gradle")
+    ext.kotlinVersion = '1.2.0'
 
     repositories {
         google()
@@ -7,10 +7,10 @@ buildscript {
     }
 
     dependencies {
-        classpath plugs.kotlinGradlePlugin
-        classpath plugs.pluginPublishPlugin
-        classpath plugs.gradleVersionsPlugin
-        classpath plugs.gradleAndroidJunitJacocoPlugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.17.0"
+        classpath "com.vanniktech:gradle-android-junit-jacoco-plugin:0.10.0"
     }
 }
 
@@ -28,13 +28,15 @@ repositories {
 
 dependencies {
     implementation localGroovy()
-    implementation deps.kotlinStdlib
-    implementation plugs.gradle
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    implementation "com.android.tools.build:gradle:3.0.1"
 
-    testImplementation deps.spockCore, { exclude module: 'groovy-all' }    // Use localGroovy()
+    testImplementation "org.spockframework:spock-core:1.1-groovy-2.4", {
+        exclude module: 'groovy-all'
+    }
 }
 
-sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+sourceCompatibility = JavaVersion.VERSION_1_7
 
 group = GROUP
 version = VERSION_NAME
