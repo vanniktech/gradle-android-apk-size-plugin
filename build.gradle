@@ -1,17 +1,17 @@
 buildscript {
-    ext.kotlinVersion = '1.2.0'
+  ext.kotlinVersion = '1.2.0'
 
-    repositories {
-        google()
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
+  repositories {
+    google()
+    maven { url "https://plugins.gradle.org/m2/" }
+  }
 
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.17.0"
-        classpath "com.vanniktech:gradle-android-junit-jacoco-plugin:0.10.0"
-    }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
+    classpath "com.github.ben-manes:gradle-versions-plugin:0.17.0"
+    classpath "com.vanniktech:gradle-android-junit-jacoco-plugin:0.10.0"
+  }
 }
 
 apply plugin: 'groovy'
@@ -22,18 +22,18 @@ apply plugin: 'com.gradle.plugin-publish'
 apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 repositories {
-    google()
-    maven { url "https://plugins.gradle.org/m2/" }
+  google()
+  maven { url "https://plugins.gradle.org/m2/" }
 }
 
 dependencies {
-    implementation localGroovy()
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-    implementation "com.android.tools.build:gradle:3.0.1"
+  implementation localGroovy()
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+  implementation "com.android.tools.build:gradle:3.0.1"
 
-    testImplementation "org.spockframework:spock-core:1.1-groovy-2.4", {
-        exclude module: 'groovy-all'
-    }
+  testImplementation "org.spockframework:spock-core:1.1-groovy-2.4", {
+    exclude module: 'groovy-all'
+  }
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_7
@@ -42,44 +42,44 @@ group = GROUP
 version = VERSION_NAME
 
 pluginBundle {
-    website = POM_URL
-    vcsUrl = POM_SCM_URL
+  website = POM_URL
+  vcsUrl = POM_SCM_URL
 
-    plugins {
-        androidApkSize {
-            id = 'com.vanniktech.android.apk.size'
-            displayName = 'Gradle Android APK Size Plugin'
-            tags = ['gradle', 'android', 'apk', 'app module', 'size']
-            description = POM_DESCRIPTION
-        }
+  plugins {
+    androidApkSize {
+      id = 'com.vanniktech.android.apk.size'
+      displayName = 'Gradle Android APK Size Plugin'
+      tags = ['gradle', 'android', 'apk', 'app module', 'size']
+      description = POM_DESCRIPTION
     }
+  }
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.3.1'
-    distributionType = Wrapper.DistributionType.ALL
+  gradleVersion = '4.3.1'
+  distributionType = Wrapper.DistributionType.ALL
 }
 
 task groovydocJar(type: Jar, dependsOn: groovydoc) {
-    classifier = 'groovydoc'
-    from groovydoc.destinationDir
+  classifier = 'groovydoc'
+  from groovydoc.destinationDir
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
+  classifier = 'javadoc'
+  from javadoc.destinationDir
 }
 
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
+  classifier = 'sources'
+  from sourceSets.main.allSource
 }
 
 artifacts {
-    archives jar
-    archives groovydocJar
-    archives javadocJar
-    archives sourcesJar
+  archives jar
+  archives groovydocJar
+  archives javadocJar
+  archives sourcesJar
 }
 
 apply from: file('gradle/gradle-mvn-push.gradle')
