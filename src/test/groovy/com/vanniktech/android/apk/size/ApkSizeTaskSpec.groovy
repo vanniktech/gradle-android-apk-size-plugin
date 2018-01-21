@@ -1,13 +1,31 @@
 package com.vanniktech.android.apk.size
 
+import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
+import org.junit.Rule
+import org.junit.rules.TemporaryFolder
 import spock.lang.Specification
 
 final class ApkSizeTaskSpec extends Specification {
-    def project
+    @Rule final TemporaryFolder tempFolder = new TemporaryFolder()
+    Project project
+    File apkFile
+    File outputFile
 
     def "setup"() {
         project = ProjectBuilder.builder().build()
+
+        apkFile = tempFolder.newFile("tiles.apk")
+        def apkResource = getClass().getResourceAsStream("/tiles.apk")
+        apkResource.withStream { input ->
+          apkFile.append(input)
+        }
+
+        outputFile = tempFolder.newFile("test-result.csv")
+        def outputResource = getClass().getResourceAsStream("/test-result.csv")
+        outputResource.withStream { input ->
+          outputFile.append(input)
+        }
     }
 
     def "can add task to project"() {
@@ -17,24 +35,20 @@ final class ApkSizeTaskSpec extends Specification {
 
     def "writes output file"() {
         given:
-        ApkSizeTask task = project.task "apkSize", type: ApkSizeTask
-        def parent = new File("./src/test/assets")
-        task.apk = new File(parent, "test.xml")
-        task.outputFile = new File(parent, "test-result.csv")
-        task.extension = new ApkSizeExtension(maxApkSize: 500)
+        def task = project.task("apkSize", type: ApkSizeTask) as ApkSizeTask
+        task.apk = apkFile
+        task.outputFile = outputFile
+        task.extension = new ApkSizeExtension(maxApkSize: 2000000)
 
         when:
         task.execute()
 
-        def scanner = new Scanner(task.outputFile)
-        def contents = []
-        while (scanner.hasNextLine()) {
-            contents.add(scanner.nextLine())
-        }
-
         then:
-        contents.size() == 2
-        contents.get(0) == "bytes,kilobytes,megabytes"
-        contents.get(1) == "219,0.22,0"
+        def actual = task.outputFile.text
+        def expected =
+          """bytes,kilobytes,megabytes
+1899702,1899.7,1.9
+"""
+        actual == expected
     }
 }

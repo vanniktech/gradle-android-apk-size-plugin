@@ -83,3 +83,40 @@ artifacts {
 }
 
 apply from: file('gradle/gradle-mvn-push.gradle')
+
+tasks.withType(JavaCompile) {
+  configure(options) {
+    compilerArgs << "-Xlint:all"            // Turn on all warnings
+    compilerArgs << "-Werror"               // Turn warnings into errors
+    encoding = "utf-8"
+    incremental = true
+    fork = true
+  }
+}
+
+tasks.withType(GroovyCompile) {
+  configure(options) {
+    compilerArgs << "-Xlint:all"            // Turn on all warnings
+    compilerArgs << "-Werror"               // Turn warnings into errors
+    encoding = "utf-8"
+    incremental = true
+    fork = true
+  }
+
+  configure(groovyOptions) {
+    encoding = "utf-8"
+    fork = true
+  }
+}
+
+tasks.withType(Test) {
+  testLogging {
+    exceptionFormat "full"
+    showCauses true
+    showExceptions true
+    showStackTraces true
+    events = ["failed", "skipped"]
+  }
+
+  maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}
