@@ -3,7 +3,7 @@ buildscript {
 
   repositories {
     google()
-    maven { url "https://plugins.gradle.org/m2/" }
+    gradlePluginPortal()
   }
 
   dependencies {
@@ -23,7 +23,7 @@ apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 repositories {
   google()
-  maven { url "https://plugins.gradle.org/m2/" }
+  gradlePluginPortal()
 }
 
 dependencies {
@@ -37,6 +37,7 @@ dependencies {
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 group = GROUP
 version = VERSION_NAME
@@ -85,6 +86,9 @@ artifacts {
 apply from: file('gradle/gradle-mvn-push.gradle')
 
 tasks.withType(JavaCompile) {
+  sourceCompatibility = JavaVersion.VERSION_1_7
+  targetCompatibility = JavaVersion.VERSION_1_7
+
   configure(options) {
     compilerArgs << "-Xlint:all"            // Turn on all warnings
     compilerArgs << "-Werror"               // Turn warnings into errors
@@ -95,6 +99,9 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(GroovyCompile) {
+  sourceCompatibility = JavaVersion.VERSION_1_7
+  targetCompatibility = JavaVersion.VERSION_1_7
+
   configure(options) {
     compilerArgs << "-Xlint:all"            // Turn on all warnings
     compilerArgs << "-Werror"               // Turn warnings into errors
