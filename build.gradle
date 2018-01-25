@@ -26,6 +26,13 @@ repositories {
   gradlePluginPortal()
 }
 
+configurations.all {
+  resolutionStrategy {
+    force "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    force "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+  }
+}
+
 dependencies {
   implementation localGroovy()
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
