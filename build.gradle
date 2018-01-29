@@ -11,6 +11,7 @@ buildscript {
     classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
     classpath "com.github.ben-manes:gradle-versions-plugin:0.17.0"
     classpath 'com.vanniktech:gradle-android-junit-jacoco-plugin:0.11.0'
+    classpath 'com.vanniktech:gradle-code-quality-tools-plugin:0.9.0'
   }
 }
 
@@ -19,7 +20,32 @@ apply plugin: 'java-gradle-plugin'
 apply plugin: 'kotlin'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'com.gradle.plugin-publish'
+apply plugin: 'com.vanniktech.code.quality.tools'
 apply plugin: 'com.vanniktech.android.junit.jacoco'
+
+codeQualityTools {
+  ktlint {
+    toolVersion = '0.15.0'
+  }
+  detekt {
+    toolVersion = '1.0.0.RC6-2'
+  }
+  findbugs {
+    enabled = false
+  }
+  pmd {
+    enabled = false
+  }
+  checkstyle {
+    enabled = false
+  }
+  cpd {
+    enabled = false
+  }
+  errorProne {
+    enabled = false
+  }
+}
 
 repositories {
   google()
