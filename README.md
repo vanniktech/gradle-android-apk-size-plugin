@@ -16,27 +16,34 @@ Works with the latest stable Gradle Android Tools version 3.0.1.
 
 **app/build.gradle**
 
-```groovy
+```gradle
 buildscript {
   repositories {
     mavenCentral()
   }
   dependencies {
-    classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.4.0'
+    classpath "com.vanniktech:gradle-android-apk-size-plugin:0.4.0"
   }
 }
 
-apply plugin: 'com.vanniktech.android.apk.size'
+apply plugin: "com.vanniktech.android.apk.size"
 ```
 
 Information: [This plugin is also available on Gradle plugins](https://plugins.gradle.org/plugin/com.vanniktech.android.apk.size)
 
-### Snapshots
+### Snapshot
 
-Can be found [here](https://oss.sonatype.org/#nexus-search;quick~gradle-android-apk-size-plugin). Current one is:
+```gradle
+buildscript {
+  repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+  }
+  dependencies {
+    classpath "com.vanniktech:gradle-android-apk-size-plugin:0.5.0-SNAPSHOT"
+  }
+}
 
-```groovy
-classpath 'com.vanniktech:gradle-android-apk-size-plugin:0.5.0-SNAPSHOT'
+apply plugin: "com.vanniktech.android.apk.size"
 ```
 
 ## Sample output
