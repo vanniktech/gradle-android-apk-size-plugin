@@ -1,9 +1,5 @@
 # gradle-android-apk-size-plugin
 
-[![Build Status](https://travis-ci.org/vanniktech/gradle-android-apk-size-plugin.svg?branch=master)](https://travis-ci.org/vanniktech/gradle-android-apk-size-plugin?branch=master)
-[![Codecov](https://codecov.io/github/vanniktech/gradle-android-apk-size-plugin/coverage.svg?branch=master)](https://codecov.io/github/vanniktech/gradle-android-apk-size-plugin?branch=master)
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
-
 Gradle plugin that generates CSV files with apk size per output and variant of apk. The files can be found here `<projectbuildDir>/outputs/apksize/`. In addition while building it'll also print out the size of the apk.
 
 Starting from version 0.3.0 the plugin can also be applied to Android library projects and hence it'll print out the aar size instead of the apk size.
