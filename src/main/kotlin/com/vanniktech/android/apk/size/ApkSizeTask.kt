@@ -21,6 +21,11 @@ open class ApkSizeTask : DefaultTask() {
     val fileEnding = apk.extension.toUpperCase(Locale.US)
     logger.log(LogLevel.LIFECYCLE, "Total $fileEnding Size in ${apk.name} in bytes: $apkSize (${ApkSizeTools.convertBytesToMegaBytes(apkSize)} mb)")
 
+    if (extension.teamcity) {
+      logger.log(LogLevel.LIFECYCLE, "##teamcity[buildStatisticValue key='ApkSize_${apk.name}_B' value='$apkSize']")
+      logger.log(LogLevel.LIFECYCLE, "##teamcity[buildStatisticValue key='ApkSize_${apk.name}_MB' value='${ApkSizeTools.convertBytesToMegaBytes(apkSize)}']")
+    }
+
     outputFile.parentFile.mkdirs()
     outputFile.createNewFile()
     outputFile.outputStream().use { outputStream ->
