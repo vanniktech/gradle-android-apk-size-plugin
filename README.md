@@ -80,7 +80,7 @@ apkSize {
 
 Configurable flags:
 - `maxApkSize`: Set the max APK size in Kb. Greater than specified size will fail the build. Default is -1.
-- `teamcity` : Enable teamcity statistics ready log output.
+- `teamcity` : Enable teamcity statistics ready log output. Default is true if run on teamcity otherwise default is false.
 
 ## Teamcity
 

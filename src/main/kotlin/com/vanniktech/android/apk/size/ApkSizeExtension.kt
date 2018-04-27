@@ -15,5 +15,5 @@ open class ApkSizeExtension {
    * see https://confluence.jetbrains.com/display/TCD10/Build+Script+Interaction+with+TeamCity for
    * an in depth explanation how it works
    */
-  var teamcity = false
+  var teamcity = System.getenv("TEAMCITY_VERSION") != null
 }
