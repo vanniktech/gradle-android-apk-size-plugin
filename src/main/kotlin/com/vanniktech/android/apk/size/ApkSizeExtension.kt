@@ -7,8 +7,9 @@ open class ApkSizeExtension {
   var maxApkSize = -1
 
   /**
-   * Enable this to get teamcity ready statistic reporting in your logs
-   * This will print logs in the form of
+   * Enable this to get teamcity ready statistic reporting in your logs.
+   * This will print logs in the form of:
+   *
    * ##teamcity[buildStatisticValue key='ApkSize_${apk.name}_B' value='{size in bytes}']
    * ##teamcity[buildStatisticValue key='ApkSize_${apk.name}_MB' value='{size in megabytes}']
    *
