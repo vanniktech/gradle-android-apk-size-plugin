@@ -1,5 +1,5 @@
 buildscript {
-  ext.kotlinVersion = '1.2.21'
+  ext.kotlinVersion = '1.2.41'
 
   repositories {
     google()
@@ -25,10 +25,10 @@ apply plugin: 'com.vanniktech.android.junit.jacoco'
 
 codeQualityTools {
   ktlint {
-    toolVersion = '0.19.0'
+    toolVersion = '0.23.1'
   }
   detekt {
-    toolVersion = '1.0.0.RC6-2'
+    toolVersion = '1.0.0.RC7'
   }
   findbugs {
     enabled = false
